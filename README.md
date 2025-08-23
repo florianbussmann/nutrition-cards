@@ -10,6 +10,10 @@ Inside of this project, you'll see the following folders and files:
 /
 ├── public/
 ├── src/
+│   └── components/
+│       └── NutritionCard.astro
+│   └── data/
+│       └── items.json
 │   └── pages/
 │       └── index.astro
 └── package.json

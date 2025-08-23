@@ -1,5 +1,14 @@
 ---
+import NutritionCard from "../components/NutritionCard.astro";
+import rawItems from "../data/items.json";
 
+const items = rawItems.map((item) => ({
+	...item,
+	nutrition: {
+		...item.nutrition,
+		"Protein per 100kcal": ((item.nutrition["Protein"] / item.Calories) * 100).toFixed(2),
+	},
+}));
 ---
 
 <html lang="en">
@@ -8,9 +17,11 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Nutrition Cards</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<main>
+			{items.map((item) => <NutritionCard {...item} />)}
+		</main>
 	</body>
 </html>
