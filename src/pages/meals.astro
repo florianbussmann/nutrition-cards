@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import items from "../data/items.json";
+import meals from "../data/meals.json";
+
+// Helper to get item by id
+function findItem(id: string) {
+  return items.find(i => i.id === id);
+}
+
+// Compute totals
+function computeRecipeNutrition(meal: { title?: string; ingredients: any; }) {
+  const totals = { Calories: 0, Fett: 0, Kohlenhydrate: 0, Protein: 0 };
+
+  meal.ingredients.forEach((ing: { itemId: any; amount: number; }) => {
+    const item = findItem(ing.itemId);
+    if (!item) return;
+
+    // Assume nutrition is per 100g
+    const factor = ing.amount / 100;
+
+    totals.Calories += item.Calories * factor;
+    totals.Fett += item.nutrition.Fat * factor;
+    totals.Kohlenhydrate += item.nutrition.Carbs * factor;
+    totals.Protein += item.nutrition.Protein * factor;
+  });
+
+  return totals;
+}
+
+const enrichedMeals = meals.map(r => ({
+  ...r,
+  nutrition: computeRecipeNutrition(r)
+}));
+---
+
+
+<BaseLayout>
+<main class="p-4">
+  {enrichedMeals.map(m => (
+    <div class="p-4 mb-6 bg-white border rounded-xl shadow-sm">
+      <h2 class="text-lg font-bold mb-2">{m.title}</h2>
+
+      <h3 class="font-semibold mb-2">Ingredients</h3>
+      <ul class="list-disc list-inside text-sm mb-4">
+        {m.ingredients.map(ing => {
+          const item = findItem(ing.itemId);
+          return <li>{ing.amount}g {item?.title}</li>;
+        })}
+      </ul>
+
+      <!-- Totals -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {Object.entries(m.nutrition).map(([key, val]) => (
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 flex flex-col text-center shadow-sm">
+            <span class="text-xs text-gray-500">{key}</span>
+            <span class="text-sm font-semibold text-gray-800">
+              {val.toFixed(1)}{key === "Calories" ? " kcal" : " g"}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</main>
+</BaseLayout>
