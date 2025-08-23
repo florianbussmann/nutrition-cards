@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Couscous",
+        "ingredients": [
+            {
+                "itemId": "dm-couscous",
+                "amount": 42
+            },
+            {
+                "itemId": "dm-olivenoel",
+                "amount": 9
+            },
+            {
+                "itemId": "dm-sojaschnetzel",
+                "amount": 25
+            },
+            {
+                "itemId": "lidl-tk-erbsen",
+                "amount": 167
+            },
+            {
+                "itemId": "lytoss-hirtenkaese",
+                "amount": 130
+            }
+        ]
+    }
+]

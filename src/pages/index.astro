@@ -1,6 +1,5 @@
 ---
-import '../styles/global.css';
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 import NutritionCard from "../components/NutritionCard.astro";
 import rawItems from "../data/items.json";
 
@@ -13,17 +12,6 @@ const items = rawItems.map((item) => ({
 }));
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Nutrition Cards</title>
-	</head>
-	<body>
-		<main>
-			{items.map((item) => <NutritionCard {...item} />)}
-		</main>
-	</body>
-</html>
+<BaseLayout>
+{items.map((item) => <NutritionCard {...item} />)}
+</BaseLayout>

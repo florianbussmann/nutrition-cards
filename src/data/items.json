@@ -1,5 +1,6 @@
 [
     {
+        "id": "dm-couscous",
         "title": "Couscous",
         "Calories": 351,
         "nutrition": {
@@ -11,5 +12,58 @@
             "Salt": 0.01
         },
         "source": "https://www.dm.de/dmbio-couscous-p4066447867664.html"
+    },
+    {
+        "id": "dm-olivenoel",
+        "title": "natives Olivenöl extra",
+        "Calories": 824,
+        "nutrition": {
+            "Fat": 92,
+            "Carbs": 0,
+            "Protein": 0,
+            "Fiber": 0,
+            "Sugar": 0,
+            "Salt": 0
+        },
+        "source": "https://www.dm.de/dmbio-natives-olivenoel-extra-p4067796070255.html"
+    },
+    {
+        "id": "dm-sojaschnetzel",
+        "title": "Soja Schnetzel",
+        "Calories": 371,
+        "nutrition": {
+            "Fat": 7.6,
+            "Carbs": 16,
+            "Protein": 52,
+            "Fiber": 15,
+            "Sugar": 7.2,
+            "Salt": 0.03
+        },
+        "source": "https://www.dm.de/dmbio-soja-schnetzel-p4066447519662.html"
+    },
+    {
+        "id": "lidl-tk-erbsen",
+        "title": "TK Erbsen",
+        "Calories": 84,
+        "nutrition": {
+            "Fat": 0.4,
+            "Carbs": 9.7,
+            "Protein": 6.6,
+            "Fiber": 7.6,
+            "Sugar": 2.5
+        },
+        "source": "Lidl"
+    },
+    {
+        "id": "lytoss-hirtenkaese",
+        "title": "Lytoss Hirtenkäse",
+        "Calories": 254,
+        "nutrition": {
+            "Fat": 20,
+            "Carbs": 0.6,
+            "Protein": 17,
+            "Sugar": 0.6
+        },
+        "source": "Aldi"
     }
 ]
