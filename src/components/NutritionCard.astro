@@ -1,0 +1,59 @@
+---
+const { title, Calories, nutrition } = Astro.props;
+---
+
+<div class="nutrition-card">
+    <div class="content">
+        <div class="header">
+            <h2>{title}</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Calories</th>
+                    {Object.keys(nutrition).map((key) => <th>{key}</th>)}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{Calories}kcal</td>
+                    {Object.values(nutrition).map((value) => <td>{value}g</td>)}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .nutrition-card {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+        align-items: flex-start;
+    }
+    .content {
+        flex: 1;
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    table {
+        margin-top: 0.5rem;
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+    }
+    th,
+    td {
+        border: 1px solid #eee;
+        padding: 0.25rem 0.5rem;
+        text-align: center;
+    }
+    th {
+        background-color: #fafafa;
+    }
+</style>
