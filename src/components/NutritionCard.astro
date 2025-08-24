@@ -1,4 +1,14 @@
 ---
+const NUTRITION_KEYS = [
+    "Fat",
+    "Carbs",
+    "Protein",
+    "Fiber",
+    "Sugar",
+    "Salt",
+    "Protein per 100kcal",
+];
+
 const { title, Calories, nutrition } = Astro.props;
 ---
 
@@ -12,12 +22,12 @@ const { title, Calories, nutrition } = Astro.props;
                 <thead class="bg-gray-50">
                     <tr>
                         <th
-                            class="px-2 py-1 border border-gray-200 text-center font-medium"
+                            class="px-2 py-1 border border-gray-200 text-center font-medium w-24"
                             >Calories</th
                         >
                         {
-                            Object.keys(nutrition).map((key) => (
-                                <th class="px-2 py-1 border border-gray-200 text-center font-medium">
+                            NUTRITION_KEYS.map((key, idx) => (
+                                <th class={`px-2 py-1 border border-gray-200 text-center font-medium ${idx === NUTRITION_KEYS.length - 1 ? "w-48" : "w-24"}`}>
                                     {key}
                                 </th>
                             ))
@@ -26,13 +36,13 @@ const { title, Calories, nutrition } = Astro.props;
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="px-2 py-1 border border-gray-200 text-center"
+                        <td class="px-2 py-1 border border-gray-200 text-center w-24"
                             >{Calories}kcal</td
                         >
                         {
-                            Object.values(nutrition).map((value) => (
-                                <td class="px-2 py-1 border border-gray-200 text-center">
-                                    {value}g
+                            NUTRITION_KEYS.map((key, idx) => (
+                                <td class={`px-2 py-1 border border-gray-200 text-center ${idx === NUTRITION_KEYS.length - 1 ? "w-48" : "w-24"}`}>
+                                    {nutrition[key] ? `${nutrition[key]} g` : "-"}
                                 </td>
                             ))
                         }
